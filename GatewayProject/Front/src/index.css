@@ -2,12 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body, #root {
-  height: 100%;
+html,
+body,
+#root {
+    height: 100%;
 }
 
 body {
-  @apply bg-gray-50 text-gray-900;
+    @apply bg-gray-50 text-gray-900;
 }
 
-.container { @apply max-w-4xl mx-auto px-4 py-8 }
+.container {
+    @apply max-w-4xl mx-auto px-4 py-8
+}
