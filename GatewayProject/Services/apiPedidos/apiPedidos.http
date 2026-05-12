@@ -1,0 +1,109 @@
+@apiPedidos_HostAddress = http://localhost:5026
+
+### ===== GET - LISTAR =====
+
+### Listar todos os pedidos
+GET {{apiPedidos_HostAddress}}/api/pedidos
+Accept: application/json
+
+###
+
+### Obter pedido por ID
+GET {{apiPedidos_HostAddress}}/api/pedidos/1
+Accept: application/json
+
+###
+
+### Obter pedidos por cliente
+GET {{apiPedidos_HostAddress}}/api/pedidos/cliente/101
+Accept: application/json
+
+###
+
+### Obter pedidos por status
+GET {{apiPedidos_HostAddress}}/api/pedidos/status/Entregue
+Accept: application/json
+
+###
+
+### Obter pedidos em intervalo de datas
+GET {{apiPedidos_HostAddress}}/api/pedidos/data/2026-05-01/2026-05-15
+Accept: application/json
+
+###
+
+### Obter estatísticas de pedidos
+GET {{apiPedidos_HostAddress}}/api/pedidos/estatisticas
+Accept: application/json
+
+###
+
+### ===== POST - CRIAR =====
+
+### Criar novo pedido
+POST {{apiPedidos_HostAddress}}/api/pedidos
+Content-Type: application/json
+
+{
+  "clienteId": 104,
+  "clienteNome": "Ana Costa",
+  "valorTotal": 350.00,
+  "status": "Pendente",
+  "itens": [
+    {
+      "id": 0,
+      "produtoId": 1,
+      "produtoNome": "Notebook",
+      "quantidade": 1,
+      "precoUnitario": 350.00,
+      "subtotal": 350.00
+    }
+  ]
+}
+
+###
+
+### ===== PUT - ATUALIZAR =====
+
+### Atualizar pedido completo
+PUT {{apiPedidos_HostAddress}}/api/pedidos/1
+Content-Type: application/json
+
+{
+  "clienteId": 101,
+  "clienteNome": "João Silva",
+  "valorTotal": 300.00,
+  "status": "Entregue",
+  "itens": [
+    {
+      "id": 1,
+      "produtoId": 1,
+      "produtoNome": "Notebook",
+      "quantidade": 1,
+      "precoUnitario": 300.00,
+      "subtotal": 300.00
+    }
+  ]
+}
+
+###
+
+### Atualizar status do pedido
+PUT {{apiPedidos_HostAddress}}/api/pedidos/2/status/Entregue
+Content-Type: application/json
+
+###
+
+### ===== DELETE =====
+
+### Deletar pedido
+DELETE {{apiPedidos_HostAddress}}/api/pedidos/3
+Accept: application/json
+
+###
+
+### Deletar item do pedido
+DELETE {{apiPedidos_HostAddress}}/api/pedidos/1/itens/1
+Accept: application/json
+
+###

@@ -1,0 +1,117 @@
+@apiProdutos_HostAddress = http://localhost:5004
+
+### ===== GET - LISTAR =====
+
+### Listar todos os produtos
+GET {{apiProdutos_HostAddress}}/api/produtos
+Accept: application/json
+
+###
+
+### Obter produto por ID
+GET {{apiProdutos_HostAddress}}/api/produtos/1
+Accept: application/json
+
+###
+
+### Obter produtos por categoria
+GET {{apiProdutos_HostAddress}}/api/produtos/categoria/Periféricos
+Accept: application/json
+
+###
+
+### Obter produtos por faixa de preço
+GET {{apiProdutos_HostAddress}}/api/produtos/preco/100/500
+Accept: application/json
+
+###
+
+### Obter produtos por nome
+GET {{apiProdutos_HostAddress}}/api/produtos/nome/Notebook
+Accept: application/json
+
+###
+
+### Obter produtos ativos
+GET {{apiProdutos_HostAddress}}/api/produtos/ativos
+Accept: application/json
+
+###
+
+### Obter produtos com estoque
+GET {{apiProdutos_HostAddress}}/api/produtos/com-estoque
+Accept: application/json
+
+###
+
+### Obter todas as categorias
+GET {{apiProdutos_HostAddress}}/api/categorias
+Accept: application/json
+
+###
+
+### Obter estatísticas
+GET {{apiProdutos_HostAddress}}/api/produtos/estatisticas
+Accept: application/json
+
+###
+
+### ===== POST - CRIAR =====
+
+### Criar novo produto
+POST {{apiProdutos_HostAddress}}/api/produtos
+Content-Type: application/json
+
+{
+  "nome": "Impressora",
+  "descricao": "Impressora multifuncional 3 em 1",
+  "preco": 599.90,
+  "estoque": 12,
+  "categoria": "Periféricos",
+  "ativo": true
+}
+
+###
+
+### ===== PUT - ATUALIZAR =====
+
+### Atualizar produto completo
+PUT {{apiProdutos_HostAddress}}/api/produtos/1
+Content-Type: application/json
+
+{
+  "nome": "Notebook Gamer",
+  "descricao": "Notebook de alto desempenho com processador i9 - Atualizado",
+  "preco": 5500.00,
+  "estoque": 8,
+  "categoria": "Informática",
+  "ativo": true
+}
+
+###
+
+### Atualizar estoque
+PUT {{apiProdutos_HostAddress}}/api/produtos/1/estoque/-2
+Content-Type: application/json
+
+###
+
+### Desativar produto
+PUT {{apiProdutos_HostAddress}}/api/produtos/2/desativar
+Content-Type: application/json
+
+###
+
+### Ativar produto
+PUT {{apiProdutos_HostAddress}}/api/produtos/2/ativar
+Content-Type: application/json
+
+###
+
+### ===== DELETE =====
+
+### Deletar produto
+DELETE {{apiProdutos_HostAddress}}/api/produtos/6
+Accept: application/json
+
+###

@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  apipedidos:
+    build:
+      context: .
+      dockerfile: Services/apiPedidos/Dockerfile
+    ports:
+      - "5026:5026"
+    restart: always
+    networks:
+      - micro
+
+  apiprodutos:
+    build:
+      context: .
+      dockerfile: Services/apiProdutos/Dockerfile
+    ports:
+      - "5004:5004"
+    restart: always
+    networks:
+      - micro
+
+  gateway:
+    build:
+      context: .
+      dockerfile: Gateway/Dockerfile
+    ports:
+      - "5170:5170"
+    depends_on:
+      - apipedidos
+      - apiprodutos
+    restart: always
+    networks:
+      - micro
+
+networks:
+  micro:
+    driver: bridge

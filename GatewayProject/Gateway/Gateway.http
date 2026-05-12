@@ -1,0 +1,163 @@
+@Gateway_HostAddress = http://localhost:5170
+
+### ===== GATEWAY INFO E HEALTH =====
+
+### Health Check - Verificar se o Gateway está rodando
+GET {{Gateway_HostAddress}}/health
+Accept: application/json
+
+###
+
+### Informações do Gateway
+GET {{Gateway_HostAddress}}/gateway/info
+Accept: application/json
+
+###
+
+### ===== ROTEAMENTO PEDIDOS =====
+
+### Listar todos os pedidos (via Gateway)
+GET {{Gateway_HostAddress}}/api/pedidos
+Accept: application/json
+
+###
+
+### Obter pedido específico (via Gateway)
+GET {{Gateway_HostAddress}}/api/pedidos/1
+Accept: application/json
+
+###
+
+### Obter pedidos por cliente (via Gateway)
+GET {{Gateway_HostAddress}}/api/pedidos/cliente/101
+Accept: application/json
+
+###
+
+### Criar pedido (via Gateway)
+POST {{Gateway_HostAddress}}/api/pedidos
+Content-Type: application/json
+
+{
+  "clienteId": 105,
+  "clienteNome": "Pedro Costa",
+  "valorTotal": 899.90,
+  "status": "Pendente",
+  "itens": [
+    {
+      "produtoId": 2,
+      "produtoNome": "Mouse",
+      "quantidade": 3,
+      "precoUnitario": 89.90,
+      "subtotal": 269.70
+    },
+    {
+      "produtoId": 3,
+      "produtoNome": "Teclado",
+      "quantidade": 2,
+      "precoUnitario": 299.90,
+      "subtotal": 599.80
+    }
+  ]
+}
+
+###
+
+### Atualizar status pedido (via Gateway)
+PUT {{Gateway_HostAddress}}/api/pedidos/1/status/Entregue
+Accept: application/json
+
+###
+
+### Deletar pedido (via Gateway)
+DELETE {{Gateway_HostAddress}}/api/pedidos/3
+Accept: application/json
+
+###
+
+### ===== ROTEAMENTO PRODUTOS =====
+
+### Listar todos os produtos (via Gateway)
+GET {{Gateway_HostAddress}}/api/produtos
+Accept: application/json
+
+###
+
+### Obter produto específico (via Gateway)
+GET {{Gateway_HostAddress}}/api/produtos/1
+Accept: application/json
+
+###
+
+### Obter produtos por categoria (via Gateway)
+GET {{Gateway_HostAddress}}/api/produtos/categoria/Periféricos
+Accept: application/json
+
+###
+
+### Obter produtos por faixa de preço (via Gateway)
+GET {{Gateway_HostAddress}}/api/produtos/preco/50/500
+Accept: application/json
+
+###
+
+### Obter produtos ativos (via Gateway)
+GET {{Gateway_HostAddress}}/api/produtos/ativos
+Accept: application/json
+
+###
+
+### Listar todas as categorias (via Gateway)
+GET {{Gateway_HostAddress}}/api/categorias
+Accept: application/json
+
+###
+
+### Criar produto (via Gateway)
+POST {{Gateway_HostAddress}}/api/produtos
+Content-Type: application/json
+
+{
+  "nome": "Smart TV 50 polegadas",
+  "descricao": "Smart TV 4K com Android integrado",
+  "preco": 1899.90,
+  "estoque": 5,
+  "categoria": "Eletrônicos",
+  "ativo": true
+}
+
+###
+
+### Atualizar produto (via Gateway)
+PUT {{Gateway_HostAddress}}/api/produtos/1
+Content-Type: application/json
+
+{
+  "nome": "Notebook Gamer Pro",
+  "descricao": "Notebook com RTX 4070 Ti e 32GB RAM",
+  "preco": 6999.90,
+  "estoque": 7,
+  "categoria": "Informática",
+  "ativo": true
+}
+
+###
+
+### Atualizar estoque produto (via Gateway)
+PUT {{Gateway_HostAddress}}/api/produtos/2/estoque/10
+Accept: application/json
+
+###
+
+### Desativar produto (via Gateway)
+PUT {{Gateway_HostAddress}}/api/produtos/5/desativar
+Accept: application/json
+
+###
+
+### Deletar produto (via Gateway)
+DELETE {{Gateway_HostAddress}}/api/produtos/6
+Accept: application/json
+
+###
+
